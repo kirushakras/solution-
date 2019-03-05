@@ -1,0 +1,37 @@
+
+Задание.
+  1.
+#Выдаёт сумму кредитов, по валюте.
+SELECT name, sum(summ_credit) as all_kredit, valuta from Table_1 group by name, valuta;
+#Выдает сумму кредитов, переводя доллары в рубли.
+SELECT name, sum(sum_rub) FROM (SELECT name, SUM(summ_credit) as sum_rub  FROM Table_1 WHERE valuta LIKE "Rub" 
+GROUP BY name
+UNION
+SELECT name , ratio * summ_credit as sum_rub FROM table_1  INNER JOIN  table_3 where table_1.valuta = table_3.valuta AND date LIKE '2019-03-5') GROUP BY name;
+
+2
+select * from (select "Avto", ans from ( SELECT  n_dogovora, sum(sum_rub) as ans FROM (SELECT n_dogovora, SUM(summ_credit) as sum_rub  FROM Table_1 WHERE valuta LIKE "Rub" ANd  n_dogovora like "%Avto%"
+GROUP BY n_dogovora
+UNION
+SELECT n_dogovora , ratio * summ_credit as ans FROM table_1  INNER JOIN  table_3 where table_1.valuta = table_3.valuta AND date LIKE '2019-03-5' and  n_dogovora like "%Avto%"  GROUP BY n_dogovora))) left join (
+select count(n_dogovora) as n from table_1 where  n_dogovora like "%Avto%")
+UNION 
+select * from (select "Potreb", ans from ( SELECT  n_dogovora, sum(sum_rub) as ans FROM (SELECT n_dogovora, SUM(summ_credit) as sum_rub  FROM Table_1 WHERE valuta LIKE "Rub" ANd  n_dogovora like "%Port%"
+GROUP BY n_dogovora
+UNION
+SELECT n_dogovora , ratio * summ_credit as ans FROM table_1  INNER JOIN  table_3 where table_1.valuta = table_3.valuta AND date LIKE '2019-03-5' and  n_dogovora like "%Port%"  GROUP BY n_dogovora))) left join (
+select count(n_dogovora) as n from table_1 where  n_dogovora like "%Port%")
+UNION 
+select * from (select "Kart", ans from ( SELECT  n_dogovora, sum(sum_rub) as ans FROM (SELECT n_dogovora, SUM(summ_credit) as sum_rub  FROM Table_1 WHERE valuta LIKE "Rub" ANd  n_dogovora like "%Ka%"
+GROUP BY n_dogovora
+UNION
+SELECT n_dogovora , ratio * summ_credit as ans FROM table_1  INNER JOIN  table_3 where table_1.valuta = table_3.valuta AND date LIKE '2019-03-5' and  n_dogovora like "%Kar%"  GROUP BY n_dogovora))) left join (
+select count(n_dogovora) as n from table_1 where  n_dogovora like "%Kar%")
+
+3.
+select n_dogovora,adres  from (select * from table_1 inner join table_2 where Table_1.name = Table_2.name) where date_dogovora between date_start and date_end
+
+
+4.
+select n_dogovora, ostatok, max(date) from table_4 group by n_dogovora; 
+

@@ -1,0 +1,47 @@
+create table 'Table_1' ( 'n_pp' INT, 'n_dogovora' char, 'date_dogovora'  date, 'summ_credit' int, 'valuta' char, 'name' char, primary key ('n_dogovora')); 
+
+create table 'Table_2' ( 'n_pp' INT, 'name' char, 'adres' char, 'date_start'  date, 'date_end'  date, primary key ('n_pp'));
+
+create table 'Table_3' ( "date" date, "valuta" char, "ratio" dacimal(10,4), primary key ("date" , "valuta")); 
+
+create table 'Table_4' ( 'n_dogovora' char, "date" date , "ostatok" Int, primary key ( 'n_dogovora' , "date"))  ; 
+
+
+insert into Table_2 values
+(1 ,'Bogdanov', 'Vologda', "2016-01-01", "2099-12-31"),
+(2,'Gavrilov' , 'Resan' , "2005-02-03", "11-07-11"),
+(3,'Shmelev' , 'Shya' , "1983-04-01", "2099-12-31"),
+(4,'Ivashkin' , 'Rostov' , "1997-12-31", "2099-12-31"),
+(5,'Gavrilov' , 'YFA' , "2011-07-12", "2099-12-31"),
+(6,'Petrov' , 'YFA' , "2010-10-31", "2011-08-31"),
+(7,'Ivanov' , 'Ishim' , "2003-02-01", "2099-12-31"),
+(8,'Petrov' , 'Chita' , "2011-09-19", "2099-12-31");
+
+
+
+
+
+insert into Table_1 VALUES 
+(1,'Avto-1', "2017-03-15", 100, 'Rub', 'Petrov'), 
+(2,'Avto-2', "2016-04-27", 97, 'EUR', 'Ivashkin'),
+(3,'Avto-5', "2017-05-05", 2374, 'Rub', 'Gavrilov'),
+(4,'Port-10', "2017-05-21", 60, 'USD', 'Ivanov'),
+(5,'Port-23', "2017-05-31", 327, 'Rub', 'Petrov'),
+(6,'Port-24', "2017-07-12", 183, 'Rub', 'Shmelev'),
+(7,'Port-42', "2017-08-08", 92, 'Rub', 'Gavrilov'),
+(8,'Kart-7', "2017-09-05" ,12, 'Rub', 'Bogdanov');
+
+
+
+insert into Table_4 values ('Avto-1','2017-10-01',50), ('Avto-2','2017-10-02',15),
+('Avto-5','2017-10-01',1587),
+('Port-10','2017-10-03',54),
+('Port-23','2017-10-02',301),
+('Port-24','2017-10-01',98),
+('Port-42','2017-10-02',48),
+('Kart-7','2017-10-01',3),
+('Avto-1','2017-10-05',38), 
+('Avto-5','2017-10-05',1259),
+('Port-10','2017-10-15',54),
+('Port-24','2017-10-03',65),
+('Port-42','2017-10-24',48);
